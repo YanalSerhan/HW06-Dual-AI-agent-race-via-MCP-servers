@@ -76,7 +76,20 @@ class CopMCPServer:
         self._get_valid_moves = get_valid_moves
 
     def start(self) -> None:
-        self.app.run(transport="http", port=self.port, host="0.0.0.0", path="/mcp", json_response=True, stateless_http=True)
+        import typing
+        transport = typing.cast(typing.Literal["http", "sse", "stdio", "streamable-http"], os.environ.get("MCP_TRANSPORT", "streamable-http"))
+        host = os.environ.get("MCP_HOST", "0.0.0.0")
+        
+        # Ensure correct public URL resolution behind Render proxy
+        uv_config = {"proxy_headers": True, "forwarded_allow_ips": "*"}
+        
+        self.app.run(
+            transport=transport, 
+            port=self.port, 
+            host=host, 
+            path="/mcp",
+            uvicorn_config=uv_config
+        )
 
     def stop(self) -> None:
         pass
