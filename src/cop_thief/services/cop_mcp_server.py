@@ -2,11 +2,19 @@ from fastmcp import FastMCP
 
 from cop_thief.shared.config_loader import ConfigLoader
 
+import os
+from fastmcp.server.auth import StaticTokenVerifier
 
 class CopMCPServer:
     def __init__(self, config: ConfigLoader):
         self.port = config.get_mcp_ports()["cop_server_port"]
-        self.app = FastMCP("cop-server")
+        
+        token = os.environ.get("MCP_AUTH_TOKEN")
+        auth = None
+        if token:
+            auth = StaticTokenVerifier({token: {"client_id": "cop-client"}})
+            
+        self.app = FastMCP("cop-server", auth=auth)
 
         self.state = {"pos": (0, 0), "barriers": 5}
 

@@ -2,11 +2,19 @@ from fastmcp import FastMCP
 
 from cop_thief.shared.config_loader import ConfigLoader
 
+import os
+from fastmcp.server.auth import StaticTokenVerifier
 
 class ThiefMCPServer:
     def __init__(self, config: ConfigLoader):
         self.port = config.get_mcp_ports()["thief_server_port"]
-        self.app = FastMCP("thief-server")
+        
+        token = os.environ.get("MCP_AUTH_TOKEN")
+        auth = None
+        if token:
+            auth = StaticTokenVerifier({token: {"client_id": "thief-client"}})
+            
+        self.app = FastMCP("thief-server", auth=auth)
 
         @self.app.tool()
         def move(direction: str) -> str:

@@ -74,9 +74,9 @@
     "enabled": true,
     "opponent_group_name": "uoh-ay26",
     "opponent_github_repo": "https://github.com/aishadahesh/uoh-ay26-mcp-ai-cops-and-robbers.git",
-    "mcp_url_cop": "https://cop-mcp-yanel11.onrender.com",
-    "mcp_url_thief": "https://thief-mcp-yanel11.onrender.com",
-    "mcp_url_opponent_cop": "https://cop-mcp-beta.onrender.com",
-    "mcp_url_opponent_thief": "https://thief-mcp-beta.onrender.com"
+    "mcp_url_cop": "https://cop-mcp-server-m74q.onrender.com/mcp",
+    "mcp_url_thief": "https://thief-mcp-server-lo1o.onrender.com/mcp",
+    "mcp_url_opponent_cop": "https://shadowgrid-cop-mcp.onrender.com/mcp",
+    "mcp_url_opponent_thief": "https://shadowgrid-thief-mcp.onrender.com/mcp"
   }
 }
