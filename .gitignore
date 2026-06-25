@@ -19,5 +19,3 @@ __pycache__/
 
 # Generated run artifacts
 results/
-
-render.yaml

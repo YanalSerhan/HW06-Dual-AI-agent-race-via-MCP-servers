@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: cop-mcp-server
+    env: python
+    buildCommand: pip install uv && uv sync
+    startCommand: uv run python run_mcp_server.py cop
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.0
+      - key: OPENAI_API_KEY
+        sync: false
+
+  - type: web
+    name: thief-mcp-server
+    env: python
+    buildCommand: pip install uv && uv sync
+    startCommand: uv run python run_mcp_server.py thief
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.0
+      - key: OPENAI_API_KEY
+        sync: false
