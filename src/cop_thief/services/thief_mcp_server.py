@@ -44,7 +44,7 @@ class ThiefMCPServer:
         self._observe = observe
 
     def start(self) -> None:
-        self.app.run(transport="sse", port=self.port, host="0.0.0.0", path="/mcp")
+        self.app.run(transport="http", port=self.port, host="0.0.0.0", path="/mcp", json_response=True, stateless_http=True)
 
     def stop(self) -> None:
         pass
