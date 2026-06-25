@@ -36,7 +36,7 @@ class ThiefMCPServer:
         self._observe = observe
 
     def start(self) -> None:
-        self.app.run(transport="sse", port=self.port)
+        self.app.run(transport="sse", port=self.port, host="0.0.0.0")
 
     def stop(self) -> None:
         pass

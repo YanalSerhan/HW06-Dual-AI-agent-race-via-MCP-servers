@@ -40,13 +40,13 @@
     "epsilon": 0.2
   },
   "report": {
-    "recipient": "rmisegal+uoh26b@gmail.com",
+    "recipient": "yanalserhan3@gmail.com",
     "timezone": "Asia/Jerusalem",
-    "group_name": "yanel11",
+    "group_name": "yanell11",
     "students": [
-      "Nell Khoury"
+      "Yanal Serhan"
     ],
-    "github_repo": "https://github.com/Nell-Kh/HW06-Dual-AI-agent-race-via-MCP-servers"
+    "github_repo": "https://github.com/YanalSerhan/HW06-Dual-AI-agent-race-via-MCP-servers"
   },
   "vision_radius": {
     "cop": 1,
@@ -72,8 +72,8 @@
   },
   "bonus_game": {
     "enabled": true,
-    "opponent_group_name": "Team-Beta",
-    "opponent_github_repo": "https://github.com/team-beta/marl-cop-thief",
+    "opponent_group_name": "uoh-ay26",
+    "opponent_github_repo": "https://github.com/aishadahesh/uoh-ay26-mcp-ai-cops-and-robbers.git",
     "mcp_url_cop": "https://cop-mcp-yanel11.onrender.com",
     "mcp_url_thief": "https://thief-mcp-yanel11.onrender.com",
     "mcp_url_opponent_cop": "https://cop-mcp-beta.onrender.com",

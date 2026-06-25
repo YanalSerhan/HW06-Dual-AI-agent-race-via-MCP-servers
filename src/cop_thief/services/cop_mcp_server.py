@@ -42,12 +42,33 @@ class CopMCPServer:
             """Get valid moves."""
             return ["up", "down", "left", "right", "up-left", "up-right", "down-left", "down-right"]
 
+        @self.app.tool()
+        def get_deterministic_move(
+            current_row: int, current_col: int, 
+            opponent_row: int, opponent_col: int,
+            barriers_remaining: int,
+            valid_moves: list[str]
+        ) -> str:
+            """Get the next deterministic move for the cop based on WallBuilder logic."""
+            from cop_thief.services.wall_builder import WallBuilder
+            if not hasattr(self, "wall_builder"):
+                self.wall_builder = WallBuilder()
+            current_pos = (current_row, current_col)
+            opponent_pos = (opponent_row, opponent_col)
+            action = self.wall_builder.next_action(
+                current_pos=current_pos,
+                valid_moves=valid_moves,
+                barriers_remaining=barriers_remaining,
+                opponent_pos=opponent_pos
+            )
+            return action
+
         # Store for testing
         self._observe = observe
         self._get_valid_moves = get_valid_moves
 
     def start(self) -> None:
-        self.app.run(transport="sse", port=self.port)
+        self.app.run(transport="sse", port=self.port, host="0.0.0.0")
 
     def stop(self) -> None:
         pass
