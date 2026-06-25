@@ -71,6 +71,34 @@ class CopMCPServer:
             )
             return action
 
+        @self.app.tool()
+        def reset_game(cop_x: int, cop_y: int, thief_x: int, thief_y: int) -> str:
+            return "Game reset"
+
+        @self.app.tool()
+        def receive_message(message: str) -> str:
+            return f"Received: {message}"
+
+        @self.app.tool()
+        def update_state(
+            cop_x: int,
+            cop_y: int,
+            thief_x: int,
+            thief_y: int,
+            barriers: list[dict[str, int]] | None = None,
+            cop_barriers_left: int = 5,
+            turn_index: int = 0,
+            captured: bool = False,
+        ) -> str:
+            return "State updated"
+
+        @self.app.tool()
+        def choose_action() -> dict[str, str]:
+            return {
+                "move": "n",
+                "message": "some message"
+            }
+
         # Store for testing
         self._observe = observe
         self._get_valid_moves = get_valid_moves
